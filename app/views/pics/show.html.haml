@@ -17,6 +17,6 @@
 						=@pic.user.email
 					.col-md-6
 						.btn-group.pull-right
-
+							-if user_signed_in?
 							= link_to "Edit", edit_pic_path, class: "btn btn-default"
 							= link_to "Delete", pic_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"

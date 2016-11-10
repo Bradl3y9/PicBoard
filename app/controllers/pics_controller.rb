@@ -1,8 +1,13 @@
 class PicsController < ApplicationController
 	before_action :find_pic, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
 		@pics = Pic.all.order("created_at DESC")
+	end
+
+	def userpics
+    	@pics = Pic.where(:user_id => current_user.id)
 	end
 
 	def show
