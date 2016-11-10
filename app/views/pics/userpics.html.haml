@@ -1,8 +1,9 @@
 #pics.transitions-enabled
-	- @pics.each do |pic|
+	- @user_pics.each do |pic|
 		.box.panel.panel-default
 			= link_to (image_tag pic.image.url), pic
 			%h2= link_to pic.title, pic
 			%p.user
 				Submitted by
 				= pic.user.email
+				

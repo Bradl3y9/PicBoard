@@ -7,7 +7,7 @@ class PicsController < ApplicationController
 	end
 
 	def userpics
-    	@pics = Pic.where(:user_id => current_user.id)
+		@user_pics = Pic.find(params[:user_id]) 
 	end
 
 	def show
