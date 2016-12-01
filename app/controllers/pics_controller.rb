@@ -48,6 +48,9 @@ class PicsController < ApplicationController
 
 	def search_results #Siplay search
 		@found_pics  = Pic.keyword_search(params[:search_keywords])
+		@user_keywords = params[:search_keywords]
+		@pics = Pic.all
+	
 	end
 
 	private
