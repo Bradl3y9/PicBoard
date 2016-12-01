@@ -7,7 +7,7 @@ class PicsController < ApplicationController
 	end
 
 	def userpics
-		@user_pics = Pic.find(params[:user_id]) 
+		@pics = Pic.where(user_id) 
 	end
 
 	def show
@@ -41,6 +41,13 @@ class PicsController < ApplicationController
 	def destroy
 		@pic.destroy
 		redirect_to root_path
+	end
+
+	def search #display search form
+	end
+
+	def search_results #Siplay search
+		@found_pics  = Pic.keyword_search(params[:search_keywords])
 	end
 
 	private
