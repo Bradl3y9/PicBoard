@@ -2,5 +2,7 @@
 	= label_tag 'Keywords: '
 	= text_field_tag :search_keywords
 	= label_tag 'Tags: '
-	= text_field_tag :search_tags
+	= select_tag :tags, 
+		options_for_select(Tag.all.map{ |u| [u.name, u.id] }, ), 
+		{class: %w(chosen-select chosen-drop form_control), multiple: true}
 	= submit_tag "Search"

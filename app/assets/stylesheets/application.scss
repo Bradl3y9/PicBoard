@@ -10,11 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
  *= require 'masonry/transitions'
  *= require_tree .
  *= require_self
  */
 
+@import "chosen";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

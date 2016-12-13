@@ -11,7 +11,7 @@
 			.navbar-brand= link_to "Pic Board", root_path
 
 			.content.nav.navbar-left.navbar-search.navbar-form 
-				= render :partial => 'pics/search'
+				= render :template => 'pics/search'
 
 			- if user_signed_in?
 				%ul.nav.navbar-nav.navbar-right

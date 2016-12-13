@@ -1,4 +1,4 @@
-= simple_form_for @tag, html: { multipart: true } do |f|
+= simple_form_for @tag do |f|
 	- if @tag.errors.any?
 		#errors
 			%h2
@@ -7,6 +7,7 @@
 			%ul
 				- @tag.errors.full_messages.each do |msg|
 					%li= msg
+
 	.form-group
 		= f.input :name, input_html: {class: 'form_control'}
 
