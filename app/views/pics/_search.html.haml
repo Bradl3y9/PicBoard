@@ -1,3 +1,6 @@
 = form_tag search_results_path, method: 'get' do 
+	= label_tag 'Keywords: '
 	= text_field_tag :search_keywords
+	= label_tag 'Tags: '
+	= text_field_tag :search_tags
 	= submit_tag "Search"
