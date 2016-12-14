@@ -11,6 +11,10 @@ class Pic < ApplicationRecord
 		keywords = "%" + keywords + "%"
 		Pic.where("title LIKE ? OR description LIKE ?",  keywords, keywords)
 	end
+	def self.user_keyword_search(keywords)
+		keywords = "%" + keywords + "%"
+		Pic.where("user_id LIKE ?",   keywords)
+	end
 
 	
 end

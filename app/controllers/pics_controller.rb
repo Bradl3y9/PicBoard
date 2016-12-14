@@ -30,6 +30,10 @@ class PicsController < ApplicationController
 	def edit
 	end
 
+	def goToUser
+		redirect_to /users/
+	end
+
 	def update
 		if @pic.update(pic_params)
 			redirect_to @pic, notice: "Pic was Successfully updated"
