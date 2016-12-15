@@ -17,7 +17,7 @@
 	.form-group
 		= label_tag 'Tags: '
 		= select_tag :tags,
-			options_for_select(Tag.all.map{ |u| [u.name, u.id] }, ),
+			options_for_select(Tag.all.map{ |u| [u.name] },  PicTag.where(:pic_id => @pic.id).map{ |u| Tag.find(u.tag_id).name}),
 			{class: %w(chosen-select chosen-drop form_control), multiple: true}
 
 	.form-group

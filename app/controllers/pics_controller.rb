@@ -26,10 +26,12 @@ class PicsController < ApplicationController
 			render 'new'
 		end
 
-		params['tags'].each do |tag|
-			temp = PicTag.create(:pic_id => @pic.id, :tag_id => tag)
-			if temp.valid?
-				temp.save
+		if params['tags']
+			params['tags'].each do |tag|
+				temp = PicTag.create(:pic_id => @pic.id, :tag_id => Tag.where(:name => tag).first.id)
+				if temp.valid?
+					temp.save
+				end
 			end
 		end
 	end
@@ -46,6 +48,16 @@ class PicsController < ApplicationController
 			redirect_to @pic, notice: "Pic was Successfully updated"
 		else
 			render 'edit'
+		end
+
+		PicTag.where(:pic_id => @pic.id).destroy_all
+		if params['tags']
+			params['tags'].each do |tag|
+				temp = PicTag.create(:pic_id => @pic.id, :tag_id => Tag.where(:name => tag).first.id)
+				if temp.valid?
+					temp.save
+				end
+			end
 		end
 	end
 
