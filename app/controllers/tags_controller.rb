@@ -29,7 +29,10 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     respond_to do |format|
-      if @tag.save
+      if Tag.exists?(name: tag_params[:name])
+        format.html { redirect_to @tag, notice: 'Tag already exists...' }
+        format.json { render :show, status: :conflict, location: @tag }
+      elsif @tag.save
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
         format.json { render :show, status: :created, location: @tag }
       else

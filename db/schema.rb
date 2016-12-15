@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(version: 20161215034106) do
     t.index ["user_id"], name: "index_pics_on_user_id"
   end
 
-  create_table "pics_tags", id: false, force: :cascade do |t|
-    t.integer "pic_id"
-    t.integer "tag_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
