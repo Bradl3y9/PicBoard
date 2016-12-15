@@ -70,7 +70,13 @@ class PicsController < ApplicationController
 	end
 
 	def search_results #Siplay search
-		@found_pics  = Pic.keyword_search(params[:search_keywords])
+		pics_from_tags = Pic.all
+		if params['tags'] #if tags selected an exclusive-search is performed
+			params[:tags].each do |tag|
+				pics_from_tags = pics_from_tags.where(:id => PicTag.where(:tag_id => tag).map{|u| u.pic_id})
+			end
+		end
+		@found_pics  = pics_from_tags.keyword_search(params[:search_keywords])
 		@user_keywords = params[:search_keywords]
 		@pics = Pic.all
 	
