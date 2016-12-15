@@ -15,7 +15,10 @@
 		= f.input :title, input_html: {class: 'form_control'}
 
 	.form-group
-		= f.input :tags, input_html: {class: 'form_control'}
+		= label_tag 'Tags: '
+		= select_tag :tags,
+			options_for_select(Tag.all.map{ |u| [u.name, u.id] }, ),
+			{class: %w(chosen-select chosen-drop form_control), multiple: true}
 
 	.form-group
 		= f.input :description, input_html: {class: 'form_control'}	

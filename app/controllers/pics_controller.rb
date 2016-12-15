@@ -25,6 +25,13 @@ class PicsController < ApplicationController
 		else
 			render 'new'
 		end
+
+		params['tags'].each do |tag|
+			temp = PicTag.create(:pic_id => @pic.id, :tag_id => tag)
+			if temp.valid?
+				temp.save
+			end
+		end
 	end
 
 	def edit
@@ -60,7 +67,7 @@ class PicsController < ApplicationController
 	private
 
 	def pic_params
-		params.require(:pic).permit(:title, :description, :image)
+		params.require(:pic).permit(:title, :description, :image, tags: [])
 	end
 
 	def find_pic

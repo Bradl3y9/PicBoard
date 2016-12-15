@@ -1,0 +1,2 @@
+class PicTag < ApplicationRecord
+end
